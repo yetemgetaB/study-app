@@ -1,12 +1,14 @@
 import { useState } from "react";
 import "./App.css";
-import Sidebar from "./components/Sidebar";
-import PDFViewer from "./components/PDFViewer";
-import AIChat from "./components/AIChat";
-import Scheduler from "./components/Scheduler";
-import Notes from "./components/Notes";
+import Sidebar from "./components/Sidebar.tsx";
+import PDFViewer from "./components/PDFViewer.tsx";
+import AIChat from "./components/AIChat.tsx";
+import GridScheduler from "./components/GridScheduler.tsx";
+import Notes from "./components/Notes.tsx";
+import GPACalculator from "./components/GPACalculator.tsx";
+import Settings from "./components/Settings.tsx";
 
-type View = "pdf" | "chat" | "schedule" | "notes";
+type View = "pdf" | "chat" | "schedule" | "notes" | "gpa" | "settings";
 
 function App() {
   const [activeView, setActiveView] = useState<View>("pdf");
@@ -19,9 +21,13 @@ function App() {
       case "chat":
         return <AIChat />;
       case "schedule":
-        return <Scheduler />;
+        return <GridScheduler />;
       case "notes":
         return <Notes />;
+      case "gpa":
+        return <GPACalculator />;
+      case "settings":
+        return <Settings />;
       default:
         return <PDFViewer />;
     }
